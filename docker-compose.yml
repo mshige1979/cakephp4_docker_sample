@@ -18,6 +18,7 @@ services:
       MYSQL_DATABASE: sample
       MYSQL_USER: hoge
       MYSQL_PASSWORD: foofoo
+      TZ: "Asia/Tokyo"
     # ボリューム
     volumes:
       - mysql_data:/var/lib/mysql
