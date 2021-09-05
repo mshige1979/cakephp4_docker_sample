@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  # DB
+  db:
+    # コンテナ名
+    container_name: mysql
+    # イメージ
+    image: mysql
+    #
+    tty: true
+    # 再起動
+    restart: always
+    # 環境変数
+    environment:
+      MYSQL_ROOT_USER: "root"
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: sample
+      MYSQL_USER: hoge
+      MYSQL_PASSWORD: foofoo
+    # ボリューム
+    volumes:
+      - mysql_data:/var/lib/mysql
+    # ポート
+    ports:
+      - 3306:3306
+
+# 名前付きボリュームをdockerホストの管理下で作成
+volumes:
+  mysql_data: {}

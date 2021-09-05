@@ -18,3 +18,13 @@ docker stop php-app
 # bash
 
 docker exec -it php-app /bin/bash
+
+# 滅びの呪文
+
+## docker-compose 管理下のものを全て削除する
+
+docker-compose down --rmi all --volumes --remove-orphans
+
+## ボリュームのみ削除
+
+docker-compose down --volumes
