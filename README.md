@@ -1,30 +1,42 @@
-## 最新イメージ取得
+## git clone
 
-docker pull php
+    git clone https://github.com/mshige1979/cakephp4_docker_sample.git
 
-## バージョン指定
+## docker build
 
-docker pull php:7.4.23-cli
+### dcoker-compose build
 
-# コンテナ起動
+    docker-compose build --no-cache
 
-docker run -it --rm -d --name php-app php
-docker run -it --rm -d --name php-app php:7.4.23-cli
+### 起動
 
-# コンテナ停止
+    docker-compose up -d
 
-docker stop php-app
+### 終了
 
-# bash
+    docker-compose down
 
-docker exec -it php /bin/bash
+## cakephp install
 
-# 滅びの呪文
+### コンテナへ入る
 
-## docker-compose 管理下のものを全て削除する
+    docker exec -it php /bin/bash
 
-docker-compose down --rmi all --volumes --remove-orphans
+### ディレクトリ移動
 
-## ボリュームのみ削除
+    cd /var/www
 
-docker-compose down --volumes
+### インストール
+
+    composer self-update && composer create-project --prefer-dist cakephp/app:4.* html
+
+### 動作確認
+
+    cd /var/www/html
+    bin/cake server -H 0.0.0.0 -p 4321
+
+## 参考リンク
+
+    https://book.cakephp.org/4/ja/installation.html
+    https://tt-computing.com/docker-cake4-nginx-mysql
+    https://qiita.com/ucan-lab/items/a388e214d4e4ed4630b1
