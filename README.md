@@ -17,7 +17,7 @@ docker stop php-app
 
 # bash
 
-docker exec -it php-app /bin/bash
+docker exec -it php /bin/bash
 
 # 滅びの呪文
 
