@@ -9,3 +9,5 @@ RUN apt-get update && \
     docker-php-ext-install intl && \
     docker-php-ext-install pdo_mysql
 
+# composerをインストール
+COPY --from=composer /usr/bin/composer /usr/bin/composer
