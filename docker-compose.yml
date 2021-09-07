@@ -1,6 +1,24 @@
 version: "3"
 
 services:
+  # web
+  web:
+    # コンテナ名
+    container_name: web
+    # image
+    image: nginx:alpine
+    # 他のコンテナ起動後に起動するように制御
+    depends_on:
+      - php
+      - db
+    # ポート開放
+    ports:
+      - "80:80"
+    # ボリューム
+    volumes:
+      - "./nginx/conf.d:/etc/nginx/conf.d"
+      - "./app:/var/www/html"
+
   # app
   php:
     # コンテナ名
